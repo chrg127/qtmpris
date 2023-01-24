@@ -1,6 +1,7 @@
 include(../common.pri)
 
 TEMPLATE = lib
+CONFIG -= debug_and_release
 CONFIG += qt plugin link_pkgconfig
 DEPENDPATH += ../src
 INCLUDEPATH += ../src

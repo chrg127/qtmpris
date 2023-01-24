@@ -11,6 +11,8 @@ Installation:
 $ qmake && make && make install
 ```
 
+Does not compile on Windows (right now) (for unknown reason)
+
 
 TO-DO:
 ------

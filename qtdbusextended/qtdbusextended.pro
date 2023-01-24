@@ -1,4 +1,5 @@
 TEMPLATE = lib
+CONFIG -= debug_and_release
 CONFIG += qt staticlib
 
 QT = core dbus

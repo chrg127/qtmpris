@@ -1,6 +1,7 @@
 include(../common.pri)
 
 TEMPLATE = lib
+CONFIG -= debug_and_release
 CONFIG += qt link_pkgconfig no_keywords
 
 QT = core dbus

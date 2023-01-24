@@ -2,6 +2,7 @@ include(../../common.pri)
 
 TEMPLATE = app
 TARGET = player
+CONFIG -= debug_and_release
 CONFIG += qt link_pkgconfig
 
 QT += qml quick
