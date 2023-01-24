@@ -1,0 +1,11 @@
+*.o
+*.prf
+*.prl
+.qmake.stash
+Makefile
+moc_*
+*.a
+*.dll
+qmldir
+object_script.*
+src/pkgconfig

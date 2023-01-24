@@ -25,7 +25,7 @@
 
 #include "dbusextendedpendingcallwatcher_p.h"
 
-#include <DBusExtendedAbstractInterface>
+#include "dbusextendedabstractinterface.h"
 
 #include <QtDBus/QDBusMetaType>
 #include <QtDBus/QDBusMessage>
@@ -283,13 +283,13 @@ void DBusExtendedAbstractInterface::onAsyncPropertyFinished(DBusExtendedPendingC
                                     &m_lastExtendedError);
 
         if (m_lastExtendedError.isValid()) {
-            emit propertyInvalidated(watcher->asyncProperty());
+            Q_EMIT propertyInvalidated(watcher->asyncProperty());
         } else {
-            emit propertyChanged(watcher->asyncProperty(), value);
+            Q_EMIT propertyChanged(watcher->asyncProperty(), value);
         }
     }
 
-    emit asyncPropertyFinished(watcher->asyncProperty());
+    Q_EMIT asyncPropertyFinished(watcher->asyncProperty());
     watcher->deleteLater();
 }
 
@@ -303,13 +303,13 @@ void DBusExtendedAbstractInterface::onAsyncSetPropertyFinished(DBusExtendedPendi
         m_lastExtendedError = QDBusError();
     }
 
-    emit asyncSetPropertyFinished(watcher->asyncProperty());
+    Q_EMIT asyncSetPropertyFinished(watcher->asyncProperty());
 
     // Resetting the property to its previous value after sending the
     // finished signal
     if (reply.isError()) {
         m_lastExtendedError = QDBusError();
-        emit propertyChanged(watcher->asyncProperty(), watcher->previousValue());
+        Q_EMIT propertyChanged(watcher->asyncProperty(), watcher->previousValue());
     }
 
     watcher->deleteLater();
@@ -327,7 +327,7 @@ void DBusExtendedAbstractInterface::onAsyncGetAllPropertiesFinished(QDBusPending
         m_lastExtendedError = QDBusError();
     }
 
-    emit asyncGetAllPropertiesFinished();
+    Q_EMIT asyncGetAllPropertiesFinished();
 
     if (!reply.isError()) {
         onPropertiesChanged(interface(), reply.value(), QStringList());
@@ -351,9 +351,9 @@ void DBusExtendedAbstractInterface::onPropertiesChanged(const QString& interface
                 QVariant value = demarshall(interface(), metaObject()->property(propertyIndex), i.value(), &m_lastExtendedError);
 
                 if (m_lastExtendedError.isValid()) {
-                    emit propertyInvalidated(i.key());
+                    Q_EMIT propertyInvalidated(i.key());
                 } else {
-                    emit propertyChanged(i.key(), value);
+                    Q_EMIT propertyChanged(i.key(), value);
                 }
             }
 
@@ -366,7 +366,7 @@ void DBusExtendedAbstractInterface::onPropertiesChanged(const QString& interface
                 qDebug() << Q_FUNC_INFO << "Got unknown invalidated property" <<  *j;
             } else {
                 m_lastExtendedError = QDBusError();
-                emit propertyInvalidated(*j);
+                Q_EMIT propertyInvalidated(*j);
             }
 
             ++j;

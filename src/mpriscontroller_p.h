@@ -39,7 +39,7 @@
 #ifndef MPRISCONTROLLER_P_H
 #define MPRISCONTROLLER_P_H
 
-#include <DBusExtendedAbstractInterface>
+#include "dbusextendedabstractinterface.h"
 
 #include <QtCore/QObject>
 #include <QtCore/QByteArray>

@@ -16,9 +16,9 @@ use_system_dbus {
     DEFINES += USE_SYSTEM_DBUS
 }
 
-DEPENDPATH += ../qtdbusextended
-INCLUDEPATH += ../qtdbusextended
-LIBS += -L../qtdbusextended -ldbusextended-qt5
+#DEPENDPATH += ../qtdbusextended
+#INCLUDEPATH += ../qtdbusextended
+#LIBS += -L../qtdbusextended -ldbusextended-qt5
 
 # Generate pkg-config support by default
 # Note that we HAVE TO also create prl config as QMake implementation
@@ -33,7 +33,9 @@ SOURCES += \
     mpriscontroller.cpp \
     mprismanager.cpp \
     mprisplayerinterface.cpp \
-    mprisrootinterface.cpp
+    mprisrootinterface.cpp \
+    dbusextendedabstractinterface.cpp \
+    dbusextendedpendingcallwatcher.cpp
 
 HEADERS += \
     mprisqt.h \
@@ -42,7 +44,10 @@ HEADERS += \
     mprisplayer_p.h \
     mpriscontroller.h \
     mpriscontroller_p.h \
-    mprismanager.h
+    mprismanager.h \
+    dbusextended.h \
+    dbusextendedabstractinterface.h \
+    dbusextendedpendingcallwatcher_p.h
 
 INSTALL_HEADERS = \
     Mpris \

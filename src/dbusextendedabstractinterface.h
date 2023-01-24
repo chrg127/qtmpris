@@ -26,7 +26,7 @@
 #ifndef DBUSEXTENDEDABSTRACTINTERFACE_H
 #define DBUSEXTENDEDABSTRACTINTERFACE_H
 
-#include <DBusExtended>
+#include "dbusextended.h"
 
 #include <QDBusAbstractInterface>
 #include <QDBusError>
@@ -34,7 +34,7 @@
 class QDBusPendingCallWatcher;
 class DBusExtendedPendingCallWatcher;
 
-class QT_DBUS_EXTENDED_EXPORT DBusExtendedAbstractInterface: public QDBusAbstractInterface
+class DBusExtendedAbstractInterface: public QDBusAbstractInterface
 {
     Q_OBJECT
 
